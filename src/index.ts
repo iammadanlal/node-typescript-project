@@ -17,9 +17,9 @@ app.use(compression());
 app.use(cookieParser())
 app.use(bodyParser.json());
 
-app.use((req, res)=> {
+app.use((req, res, next)=> {
     console.log(req.method + " " + req.url);
-    res.end()
+    next()
 })
 
 const server = http.createServer(app);
