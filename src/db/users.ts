@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
     email: {type: String, required: true},
     authentication: {
         password: { type: String, required: true, select: false},
-        salt: {tyep: String, select: false},
+        salt: {type: String, select: false},
         sessionToken: {type: String, select: false}
     }
 });
