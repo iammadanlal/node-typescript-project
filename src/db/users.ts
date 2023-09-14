@@ -20,4 +20,4 @@ export const getUserBySessionToken = (sessionToken: string) => User.findOne({
 export const getUserById = (id: string) => User.findById(id);
 export const createUser = (values: Record<string, any>) => User.create(values)
 export const deleteUserById = (id: string) => User.findByIdAndDelete(id);
-export const updateUserById = (id: string)=> User.findByIdAndUpdate(id);
+export const updateUserById = (id: string, values: Record<string, any>)=> User.findByIdAndUpdate(id, values, {new: true});

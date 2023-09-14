@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { deleteUserById, getUsers } from '../db/users';
+import { deleteUserById, getUsers, updateUserById } from '../db/users';
 
 export const getAllUsers = async(req: express.Request, res: express.Response) => {
     try{
@@ -18,6 +18,23 @@ export const deleteUser = async(req: express.Request, res: express.Response) => 
         const {id} = req.params;
         const deleteUser = await deleteUserById(id);
         return res.json(deleteUser);
+    }catch(error){
+        console.error(error);
+        return res.sendStatus(400);
+    }
+}
+
+export const updateUser = async(req: express.Request, res: express.Response) => {
+    try{
+        const {id} = req.params;
+        const {username} = req.body;
+
+        if(!username){
+            return res.sendStatus(400);
+        }
+         
+        const updatedUser = await updateUserById(id, {username});
+        return res.json(updatedUser);
     }catch(error){
         console.error(error);
         return res.sendStatus(400);
